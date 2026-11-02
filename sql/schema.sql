@@ -1,10 +1,11 @@
-drop table message;
+drop table if exists comment;
 
-create table comment(
-  comment_id int,
-  comment_text varchar,
-  comment_user_name varchar,
-  constraint primary_key_comment primary_key (comment_id)
-);
+create table comment (
+  comment_id int auto_increment,
+  comment_text varchar(255) not null,
+  comment_user_name varchar(64) not null,
+  primary key (comment_id)
+) default charset = utf8mb4;
 
-insert into message valies(1, "Hellow world, how are you today?", "I, robot");
+insert into comment (comment_text, comment_user_name)
+values ('Hello world, how are you today?', 'I, robot');
