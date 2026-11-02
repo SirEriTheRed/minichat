@@ -1,8 +1,3 @@
 <?php
 
-function test(): void
-{
-    echo "hello world";
-}
-
-test();
+require_once __DIR__ . '/PdoConnection.php';

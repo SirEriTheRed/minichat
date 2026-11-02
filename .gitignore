@@ -3,3 +3,6 @@
 # PHP CS Fixer configuration
 /.php-cs-fixer.cache
 /.php-cs-fixer.php
+
+# Environment and private config files
+.env

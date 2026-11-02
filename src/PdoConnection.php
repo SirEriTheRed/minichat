@@ -1,17 +1,12 @@
 <?php
 
-$dbtype = 'mysql';
-$host = 'mysql-etu.unicaen.fr';
-$port = '3306';
-$dbname = 'borde251_dev';
-$username = 'borde251';
-$password = 'mdp';
-$dsn = "$dbtype:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+$env = parse_ini_file(__DIR__ . '/../.env');
+$dsn = "mysql:host={$env['DB_HOST']};port={$env['DB_PORT']};dbname={$env['DB_NAME']};charset=utf8mb4";
 
 try {
-    $pdo = new PDO($dsn, $username, $password);
+    $pdo = new PDO($dsn, $env['DB_USER'], $env['DB_PASS']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion successful !";
+    echo "Connection successful!";
 } catch (PDOException $exception) {
     echo "An exception happened while trying to connect to the database: " . $exception->getMessage();
 }

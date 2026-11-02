@@ -1,6 +1,6 @@
 {
     "name": "erithered/minichat",
-    "description": "a small php web chat for school to learn how to use php",
+    "description": "a small PHP web chat for school to learn how to use PHP",
     "type": "project",
     "license": "MIT",
     "autoload": {
