@@ -4,7 +4,7 @@ $commentsNumber = 5;
 
 $sql = "select * from comment order by comment_published_date desc limit :commentsNumber";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':commentsNumber', $commentsNumber);
+$stmt->bindValue(':commentsNumber', $commentsNumber, PDO::PARAM_INT);
 $stmt->execute();
 $comments = $stmt->fetchAll();
 
