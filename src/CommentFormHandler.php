@@ -21,10 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':userName', $userName);
     $stmt->bindParam(':commentText', $commentText);
 
-    if ($stmt->execute()) {
-        echo 'Message sent!';
-    } else {
+    if (!$stmt->execute()) {
         echo 'There was an error while sending the messsage.';
+        exit;
     }
+    header('Location: index.php');
+    exit;
 }
 exit;
