@@ -6,7 +6,7 @@ $dsn = "{$env['DB_TYPE']}:host={$env['DB_HOST']};port={$env['DB_PORT']};dbname={
 try {
     $pdo = new PDO($dsn, $env['DB_USER'], $env['DB_PASS']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connection successful!";
 } catch (PDOException $exception) {
     echo "An exception happened while trying to connect to the database: " . $exception->getMessage();
+    exit();
 }
