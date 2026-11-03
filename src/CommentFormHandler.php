@@ -21,7 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':userName', $userName);
     $stmt->bindParam(':commentText', $commentText);
 
-    if (!$stmt->execute()) {
+    if ($stmt->execute()) {
+        echo 'Message sent!';
+    } else {
         echo 'There was an error while sending the messsage.';
     }
 }
