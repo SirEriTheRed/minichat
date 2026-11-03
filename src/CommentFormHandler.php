@@ -2,6 +2,10 @@
 
 require_once __DIR__ . '/PdoConnection.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userName = trim($_POST['userName'] ?? '');
     $commentText = trim($_POST['commentText'] ?? '');
@@ -16,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit('Invalid comment text');
     }
 
+    $_SESSION['userName'] = $userName;
     $sql = "insert into comment (comment_user_name, comment_text) values (:userName, :commentText)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':userName', $userName);

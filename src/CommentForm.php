@@ -1,3 +1,13 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (empty($_SESSION['userName'])) {
+    $_SESSION['userName'] = 'Anonymous';
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +20,7 @@
       <input
         type="text"
         name="userName"
-        value="Anonymous"
+        value="<?php echo htmlspecialchars($_SESSION['userName'], ENT_QUOTES, 'UTF-8');?>"
         placeholder="John Doe"
         maxlength="64"
       />
@@ -23,3 +33,5 @@
     </form>
   </body>
 </html>
+
+
